@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Valentines</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to top right, #ffb6c1, #ff69b4);
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        div {
+            text-align: center;
+            margin-top: 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        #yesButton {
+            background-color: white;
+            color: #ff1493;
+        }
+
+        #no {
+            position: absolute;
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        /* Floating balloons */
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 40px;
+            height: 60px;
+            background: pink;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 10s infinite ease-in;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-120vh); }
+        }
+
+        /* Transparent cartoon image */
+        .cartoon {
+            width: 180px;
+            margin-top: 15px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h1>WILL YOU BE MY VALENTINE, 😘 MY GUDDUNI? ❤️</h1>
+
+        <!-- Your original photo -->
+        <img src="edited.jpg" alt="Our Photo" width="250">
+        <br><br>
+
+        <!-- Transparent cartoon image -->
+        <img src="Bubu1.png" class="cartoon" alt="Cute Cartoon">
+        <br><br>
+
+        <button id="yesButton">Yes 💖</button>
+        <button id="no">No 😢</button>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="36 - Haan Tu Hain(Jannat)-K.K.-(Mr-Jat.in).mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // YES BUTTON
+        document.getElementById("yesButton")
+            .addEventListener("click", function () {
+                alert("Iloveyou, my guddu shonamoni 💕😘");
+            });
+
+        // Play music on first click
+        document.addEventListener("click", function () {
+            document.getElementById("bgMusic").play();
+        });
+
+        // NO BUTTON RANDOM BEHAVIOR
+        var no = document.getElementById("no");
+
+        var messages = [
+            "Are you sure? 🥺",
+            "Think again my love 💕",
+            "Don't break my heart 😭",
+            "I'll buy you chocolate 🍫",
+            "Pleaseeee 😘",
+            "Okay but I will cry 🥲"
+        ];
+
+        no.addEventListener("click", function () {
+
+            // Move randomly
+            var i = Math.floor(Math.random() * window.innerWidth);
+            var j = Math.floor(Math.random() * window.innerHeight);
+
+            no.style.left = i + "px";
+            no.style.top = j + "px";
+
+            // Show random message
+            var randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            alert(randomMessage);
+        });
+
+        // Create floating balloons
+        for (let i = 0; i < 15; i++) {
+            let balloon = document.createElement("div");
+            balloon.classList.add("balloon");
+            balloon.style.left = Math.random() * 100 + "vw";
+            balloon.style.animationDuration = (6 + Math.random() * 5) + "s";
+            document.body.appendChild(balloon);
+        }
+
+    </script>
+
+</body>
+</html>
