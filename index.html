@@ -94,8 +94,11 @@
             });
 
         // Play music on first click
-        document.addEventListener("click", function () {
-            document.getElementById("bgMusic").play();
+        document.getElementById("yesButton") 
+            .addEventListener("click",function(){
+                var music = document.getElementById("bgMusic");
+                music.play();
+                alert("I love you, my guddu shonamoni💕😘");
         });
 
         // NO BUTTON RANDOM BEHAVIOR
@@ -137,5 +140,6 @@
 
 </body>
 </html>
+
 
 
